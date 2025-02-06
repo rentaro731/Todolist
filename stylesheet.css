@@ -1,0 +1,14 @@
+@charset "UTF-8";
+p {
+  font-weight: 900;
+  float: left;
+}
+.title-name p {
+  margin-right: 80px;
+}
+.title-button p {
+  margin-right: 30px;
+}
+li {
+  list-style: none;
+}
