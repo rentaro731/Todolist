@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todoリスト</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body>
+    <main>
+      <h1 class="logo">JS Todoリスト</h1>
+      <div class="radio-button">
+        <input type="radio" id="all" name="light" value="all" checked />
+        <label for="all">すべて</label>
+        <input type="radio" id="work" name="light" value="work" />
+        <label for="work">作業中</label>
+        <input type="radio" id="completion" name="light" value="completion" />
+        <label for="completion">完了</label>
+      </div>
+      <section>
+        <div class="title-name">
+          <p>ID</p>
+          <p>タスク名</p>
+          <p>期限</p>
+        </div>
+        <div class="title-button">
+          <p>状態</p>
+          <p>削除</p>
+        </div>
+      </section>
+      <div class="task">
+        <div class="task-list">
+          <ul>
+            <li>1 JavaScriotの基礎 2024-01-01</li>
+            <li>2 非同期処理 2024-12-31</li>
+            <li>3 オブジェクト指向 2025-01-01</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
