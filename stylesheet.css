@@ -1,14 +1,39 @@
 @charset "UTF-8";
+.title-name {
+  display: flex;
+}
 p {
   font-weight: 900;
-  float: left;
 }
-.title-name p {
-  margin-right: 80px;
+.name {
+  margin-right: 70px;
 }
-.title-button p {
+.title-button {
   margin-right: 30px;
+}
+.task {
+  display: flex;
 }
 li {
   list-style: none;
+  margin-bottom: 10px;
+}
+ul {
+  padding: 0;
+}
+.task-list {
+  margin-right: 40px;
+}
+.task-button {
+  margin-top: 10px;
+  margin-left: 25px;
+}
+.button {
+  margin-bottom: 10px;
+}
+.delete-button {
+  margin-left: 20px;
+}
+.add-text {
+  opacity: 0.5;
 }
