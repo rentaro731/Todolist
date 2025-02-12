@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todoリスト</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="logo">JS Todoリスト</h1>
+      <div class="radio-button">
+        <input type="radio" id="all" name="light" value="all" checked />
+        <label for="all">すべて</label>
+        <input type="radio" id="work" name="light" value="work" />
+        <label for="work">作業中</label>
+        <input type="radio" id="completion" name="light" value="completion" />
+        <label for="completion">完了</label>
+      </div>
+    </header>
+    <main>
+      <section class="title">
+        <div class="title-name">
+          <p class="name">ID</p>
+          <p class="name">タスク名</p>
+          <p class="name">期限</p>
+          <p class="title-button">状態</p>
+          <p class="title-button">削除</p>
+        </div>
+      </section>
+      <div class="task">
+        <div class="task-list">
+          <ul>
+            <li>1 JavaScriotの基礎</li>
+            <li>2 非同期処理</li>
+            <li>3 オブジェクト指向</li>
+          </ul>
+        </div>
+        <div class="dead-line">
+          <ul>
+            <li>2024-01-01</li>
+            <li>2024-12-31</li>
+            <li>2025-01-01</li>
+          </ul>
+        </div>
+        <div class="task-button">
+          <div class="button">
+            <input type="button" value="作業中" class="work-button" />
+            <input type="button" name="delete" value="✖️" class="delete-button" />
+          </div>
+          <div class="button">
+            <input type="button" value="作業中" class="work-button" />
+            <input type="button" name="delete" value="✖️" class="delete-button" />
+          </div>
+          <div class="button">
+            <input type="button" value="作業中" class="work-button" />
+            <input type="button" name="delete" value="✖️" class="delete-button" />
+          </div>
+        </div>
+      </div>
+      <section class="add-task">
+        <input type="text" value="タスク名を入力" class="add-text" />
+        <input type="date" class="add-date" />
+        <input type="button" value="追加" class="add-button" />
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
