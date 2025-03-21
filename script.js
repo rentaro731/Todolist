@@ -27,6 +27,13 @@ function add() {
   const tdStatus = document.createElement("td");
   const done = document.createElement("button");
   done.innerText = "作業中";
+  done.addEventListener("click", function () {
+    if (done.innerText === "作業中") {
+      done.innerText = "完了";
+    } else {
+      done.innerText = "作業中";
+    }
+  });
   tdStatus.appendChild(done);
   tr.appendChild(tdStatus);
 
