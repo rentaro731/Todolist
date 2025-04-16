@@ -11,32 +11,31 @@ const todoList = [
     title: "Javascriptの基礎",
     date: "2024-01-01",
     status: "作業中",
-    delete: "✖️",
   },
   {
     id: 2,
     title: "非同期処理",
     date: "2024-01-02",
     status: "作業中",
-    delete: "✖️",
   },
   {
     id: 3,
     title: "オブジェクト指向",
     date: "2024-01-03",
     status: "作業中",
-    delete: "✖️",
   },
 ];
-
 // step① タスク初期表示ボタンを押したらコンソールにtodoListが表示される
 // step② タスク初期表示ボタンを押したらtableタグにtodoListの0番目が表示される
 // step③ タスク初期表示ボタンを押したらtableタグにtodoListがすべて表示される
 // step④ ボタンを押さなくても画面をリロードしたらtodoListがすべて表示される
-
+function resetId() {
+  todoList.forEach((item, index) => {
+    item.id = index + 1;
+  });
+}
 const showTodo = () => {
   tbody.innerHTML = "";
-
   todoList.forEach((todo) => {
     const tr = document.createElement("tr");
 
@@ -56,20 +55,25 @@ const showTodo = () => {
     const work = document.createElement("button");
     work.innerText = todo.status;
     work.addEventListener("click", function () {
-      if (work.innerText === "作業中") {
-        work.innerText = "完了";
+      if (todo.status === "作業中") {
+        todo.status = "完了";
       } else {
-        work.innerText = "作業中";
+        todo.status = "作業中";
       }
+      showTodo();
     });
     status.appendChild(work);
     tr.appendChild(status);
 
     const deletebtn = document.createElement("td");
     const deleteButton = document.createElement("button");
-    deleteButton.innerText = todo.delete;
+    deleteButton.innerText = "✖️";
     deleteButton.addEventListener("click", function () {
-      tr.remove();
+      // tr.remove();
+      const index = todoList.findIndex((item) => item.id === todo.id);
+      todoList.splice(index, 1);
+      resetId();
+      showTodo();
     });
     deletebtn.appendChild(deleteButton);
     tr.appendChild(deletebtn);
@@ -87,48 +91,16 @@ window.addEventListener("load", showTodo);
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   addTodo();
+  showTodo();
 });
 
 function addTodo() {
-  const tr = document.createElement("tr");
-
-  const tdId = document.createElement("td");
-  tdId.innerText = table.rows.length;
-  tr.appendChild(tdId);
-
-  const tdText = document.createElement("td");
-  tdText.innerText = text.value;
-  tr.appendChild(tdText);
-
-  const tdDate = document.createElement("td");
-  tdDate.innerText = date.value;
-  tr.appendChild(tdDate);
-
-  const tdStatus = document.createElement("td");
-  const done = document.createElement("button");
-  done.innerText = "作業中";
-  done.addEventListener("click", function () {
-    if (done.innerText === "作業中") {
-      done.innerText = "完了";
-    } else {
-      done.innerText = "作業中";
-    }
+  todoList.push({
+    id: todoList.length + 1,
+    title: text.value,
+    date: date.value,
+    status: "作業中",
   });
-  tdStatus.appendChild(done);
-  tr.appendChild(tdStatus);
-
-  const tdAddition = document.createElement("td");
-  const deletebtn = document.createElement("button");
-  deletebtn.innerText = "✖️";
-  deletebtn.addEventListener("click", function () {
-    tr.remove();
-  });
-
-  tdAddition.appendChild(deletebtn);
-  tr.appendChild(tdAddition);
-  tbody.appendChild(tr);
-  table.appendChild(tbody);
-
   text.value = "";
   date.value = "";
 }

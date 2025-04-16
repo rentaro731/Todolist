@@ -53,3 +53,11 @@ const list = ["apple", "banana"];
 //   },
 // };
 // list.forEach((fruit) => console.log(fruit));
+
+// let a = 0;
+
+// console.log(++a);
+
+// console.log("２回目", a++);
+
+// console.log("３回目", ++a);
