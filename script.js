@@ -1,8 +1,6 @@
 const form = document.getElementById("form");
 const text = document.getElementById("text");
 const date = document.getElementById("date");
-const status = document.getElementById("workButton");
-const addition = document.getElementById("addition");
 const table = document.getElementById("table");
 const tbody = document.getElementById("tbody");
 const todoList = [
@@ -25,10 +23,7 @@ const todoList = [
     status: "作業中",
   },
 ];
-// step① タスク初期表示ボタンを押したらコンソールにtodoListが表示される
-// step② タスク初期表示ボタンを押したらtableタグにtodoListの0番目が表示される
-// step③ タスク初期表示ボタンを押したらtableタグにtodoListがすべて表示される
-// step④ ボタンを押さなくても画面をリロードしたらtodoListがすべて表示される
+
 function resetId() {
   todoList.forEach((item, index) => {
     item.id = index + 1;
@@ -52,9 +47,9 @@ const showTodo = () => {
     tr.appendChild(date);
 
     const status = document.createElement("td");
-    const work = document.createElement("button");
-    work.innerText = todo.status;
-    work.addEventListener("click", function () {
+    const statusBtn = document.createElement("button");
+    statusBtn.innerText = todo.status;
+    statusBtn.addEventListener("click", function () {
       if (todo.status === "作業中") {
         todo.status = "完了";
       } else {
@@ -62,14 +57,13 @@ const showTodo = () => {
       }
       showTodo();
     });
-    status.appendChild(work);
+    status.appendChild(statusBtn);
     tr.appendChild(status);
 
     const deletebtn = document.createElement("td");
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "✖️";
     deleteButton.addEventListener("click", function () {
-      // tr.remove();
       const index = todoList.findIndex((item) => item.id === todo.id);
       todoList.splice(index, 1);
       resetId();
@@ -83,10 +77,6 @@ const showTodo = () => {
   });
 };
 window.addEventListener("load", showTodo);
-// TODO: エラーになる
-// todoList.addEventListener("click", () => showTodo());
-
-// TODO: tableの中ではなくtbodyの中に追加するようにする
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
