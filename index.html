@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todoリスト</title>
-    <link rel="stylesheet" href="stylesheet.css" />
   </head>
   <body>
+    <h1 class="logo">JS Todoリスト</h1>
     <header>
-      <h1 class="logo">JS Todoリスト</h1>
       <div class="radio-button">
         <input type="radio" id="all" name="light" value="all" checked />
         <label for="all">すべて</label>
@@ -19,56 +18,25 @@
       </div>
     </header>
     <main>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>タスク名</th>
-          <th>期限</th>
-          <th>状態</th>
-          <th>削除</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>JavaScriotの基礎</td>
-          <td>2024-01-01</td>
-          <td>
-            <button class="work-button">作業中</button>
-          </td>
-          <td>
-            <button class="delete">✖️</button>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>非同期処理</td>
-          <td>2024-12-31</td>
-          <td>
-            <button class="work-button">作業中</button>
-          </td>
-          <td>
-            <button class="delete">✖️</button>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>オブジェクト指向</td>
-          <td>2025-01-01</td>
-          <td>
-            <button class="work-button">作業中</button>
-          </td>
-          <td>
-            <button class="delete">✖️</button>
-          </td>
-        </tr>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>タスク名</th>
+            <th>期限</th>
+            <th>状態</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
       </table>
-      <table>
-        <tr>
-          <td><input type="text" value="タスク名を入力" /></td>
-          <td><input type="date" /></td>
-          <td><button class="addition">追加</button></td>
-        </tr>
-      </table>
+      <form id="form">
+        <input type="text" id="text" placeholder="タスク名を入力" />
+        <input type="date" id="date" />
+        <button type="submit" id="addition">追加</button>
+      </form>
     </main>
     <script src="script.js"></script>
+    <script src="learning.js"></script>
   </body>
 </html>
