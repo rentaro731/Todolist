@@ -3,6 +3,7 @@ const text = document.getElementById("text");
 const date = document.getElementById("date");
 const table = document.getElementById("table");
 const tbody = document.getElementById("tbody");
+const radios = document.querySelectorAll('input[name="light"]');
 const todoList = [
   {
     id: 1,
@@ -29,9 +30,31 @@ function resetId() {
     item.id = index + 1;
   });
 }
+
+let filter = "all";
+radios.forEach((radio) => {
+  radio.addEventListener("change", (e) => {
+    const value = e.target.value;
+    if (value === "all") {
+      filter = "all";
+    } else if (value === "work") {
+      filter = "作業中";
+    } else if (value === "completion") {
+      filter = "完了";
+    }
+    showTodo();
+  });
+});
+
 const showTodo = () => {
   tbody.innerHTML = "";
-  todoList.forEach((todo) => {
+  const filteredTodoList = todoList.filter((todo) => {
+    if (filter === "all") {
+      return true;
+    }
+    return todo.status === filter;
+  });
+  filteredTodoList.forEach((todo) => {
     const tr = document.createElement("tr");
 
     const id = document.createElement("td");
