@@ -4,57 +4,56 @@ const date = document.getElementById("date");
 const table = document.getElementById("table");
 const tbody = document.getElementById("tbody");
 const radios = document.querySelectorAll('input[name="light"]');
+const ALL = "all";
+const NOT_STARTED = "Not Started";
+const DONE = "Done";
 const todoList = [
   {
     id: 1,
     title: "Javascriptの基礎",
     date: "2024-01-01",
-    status: "作業中",
+    status: NOT_STARTED,
   },
   {
     id: 2,
     title: "非同期処理",
     date: "2024-01-02",
-    status: "作業中",
+    status: NOT_STARTED,
   },
   {
     id: 3,
     title: "オブジェクト指向",
     date: "2024-01-03",
-    status: "作業中",
+    status: NOT_STARTED,
   },
 ];
-
+let filter = ALL;
+radios.forEach((radio) => {
+  radio.addEventListener("change", (e) => {
+    const value = e.target.value;
+    if (value === ALL) {
+      filter = ALL;
+    } else if (value === "notStarted") {
+      filter = NOT_STARTED;
+    } else if (value === "done") {
+      filter = DONE;
+    }
+    showTodo();
+  });
+});
 function resetId() {
   todoList.forEach((item, index) => {
     item.id = index + 1;
   });
 }
-
-let filter = "all";
-radios.forEach((radio) => {
-  radio.addEventListener("change", (e) => {
-    const value = e.target.value;
-    if (value === "all") {
-      filter = "all";
-    } else if (value === "work") {
-      filter = "作業中";
-    } else if (value === "completion") {
-      filter = "完了";
-    }
-    showTodo();
-  });
-});
-
 const showTodo = () => {
   tbody.innerHTML = "";
-  const filteredTodoList = todoList.filter((todo) => {
-    if (filter === "all") {
-      return true;
-    }
+  const filteredList = todoList.filter((todo) => {
+    if (filter === ALL) return true;
     return todo.status === filter;
   });
-  filteredTodoList.forEach((todo) => {
+
+  filteredList.forEach((todo) => {
     const tr = document.createElement("tr");
 
     const id = document.createElement("td");
@@ -73,10 +72,10 @@ const showTodo = () => {
     const statusBtn = document.createElement("button");
     statusBtn.innerText = todo.status;
     statusBtn.addEventListener("click", function () {
-      if (todo.status === "作業中") {
-        todo.status = "完了";
+      if (todo.status === NOT_STARTED) {
+        todo.status = DONE;
       } else {
-        todo.status = "作業中";
+        todo.status = NOT_STARTED;
       }
       showTodo();
     });
@@ -112,7 +111,7 @@ function addTodo() {
     id: todoList.length + 1,
     title: text.value,
     date: date.value,
-    status: "作業中",
+    status: NOT_STARTED,
   });
   text.value = "";
   date.value = "";
