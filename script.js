@@ -100,6 +100,13 @@ const showTodo = () => {
 };
 window.addEventListener("load", showTodo);
 
+form.addEventListener("keydown", function (event) {
+  if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+    event.preventDefault();
+    addTodo();
+    showTodo();
+  }
+});
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   addTodo();
