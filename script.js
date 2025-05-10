@@ -53,11 +53,11 @@ const showTodo = () => {
     return todo.status === filter;
   });
 
-  filteredList.forEach((todo) => {
+  filteredList.forEach((todo, index) => {
     const tr = document.createElement("tr");
 
     const id = document.createElement("td");
-    id.innerText = todo.id;
+    id.innerText = index + 1;
     tr.appendChild(id);
 
     const title = document.createElement("td");
