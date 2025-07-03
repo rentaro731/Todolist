@@ -114,15 +114,11 @@ form.addEventListener("submit", function (event) {
 });
 
 function addTodo() {
-  let status = NOT_STARTED;
-  if (filter === DONE) {
-    status = DONE;
-  }
   todoList.push({
     id: todoList.length + 1,
     title: text.value,
     date: date.value,
-    status: status,
+    status: NOT_STARTED,
   });
   text.value = "";
   date.value = "";
